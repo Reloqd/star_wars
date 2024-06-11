@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  gather_facts: true
+
+  tasks:
+    - name: Include general install tools
+      include_tasks: tools.yml
+
+

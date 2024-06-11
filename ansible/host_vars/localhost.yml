@@ -1,0 +1,39 @@
+# Variables
+################################################################################################
+# Configuration ssh
+ssh_user: root
+ssh_port: "22"
+ssh_options: null
+ssh_config_host_dns_tag: "*.tag"
+ssh_host_path_test: "{{ ansible_env.HOME }}/skaleet/ansible-playbooks/inventories/test/host_vars"
+ssh_host_path_prod: "{{ ansible_env.HOME }}/skaleet/ansible-playbooks/inventories/production/host_vars"
+ssh_host_path_skaleet: "{{ ansible_env.HOME }}/skaleet/ansible-playbooks/host_vars"
+
+# Git
+git_skaleet_directory:
+  - "{{ ansible_env.HOME }}/skaleet"
+  - "{{ ansible_env.HOME }}/skaleet/skaleet_k8s"
+  - "{{ ansible_env.HOME }}/skaleet/templates_skaleet"
+
+git_url:
+  - repo: "git@gitlab.com:skaleet/infra/ansible-playbooks.git"
+    dest: "{{ git_skaleet_directory[0] }}/ansible-playbooks"
+  - repo: "git@gitlab.com:skaleet/product/savings-module.git"
+    dest: "{{ git_skaleet_directory[1] }}/savings-module"
+  - repo: "git@gitlab.com:skaleet/product/credit-module.git"
+    dest: "{{ git_skaleet_directory[1] }}/credit-module"
+  - repo: "git@gitlab.com:skaleet/infra/incron-module.git"
+    dest: "{{ git_skaleet_directory[2] }}/incron-module"
+  - repo: "git@gitlab.com:skaleet/ci/smurf_k8s_copier_template.git"
+    dest: "{{ git_skaleet_directory[2] }}/smurf_k8s_copier_template"
+  - repo: "git@gitlab.com:skaleet/ci/smurf_k8s_copier_template.git"
+    dest: "{{ git_skaleet_directory[2] }}/smurf_k8s_copier_template"
+
+# Variable à modifier
+ssh_identity_file: "/home/smaulny/.ssh/id_ed25519"
+
+# Shellrc
+shell_rc: ".zshrc"
+
+#zshrc
+temp_path: "/tmp/zshrc_content"
